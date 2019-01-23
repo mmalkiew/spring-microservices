@@ -38,7 +38,7 @@ public class CurrencyConversionController {
         CurrencyConversionResponse response = responseEntity.getBody();
 
         return new CurrencyConversionResponse(from, to, response.getConversionMultiple(), quantity,
-                quantity.multiply(response.getConversionMultiple()));
+                quantity.multiply(response.getConversionMultiple()), response.getPort());
     }
 
     @GetMapping("/currency-converter-feign/from/{from}/to/{to}/quantity/{quantity}")
@@ -49,6 +49,6 @@ public class CurrencyConversionController {
         CurrencyConversionResponse response = feignClient.retrieveExchangeValue(from, to);
 
         return new CurrencyConversionResponse(from, to, response.getConversionMultiple(), quantity,
-                quantity.multiply(response.getConversionMultiple()));
+                quantity.multiply(response.getConversionMultiple()), response.getPort());
     }
 }

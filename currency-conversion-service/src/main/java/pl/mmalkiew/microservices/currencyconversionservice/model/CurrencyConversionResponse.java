@@ -9,16 +9,18 @@ public class CurrencyConversionResponse {
     private BigDecimal conversionMultiple;
     private BigDecimal quantity;
     private BigDecimal totalCalculatedAmount;
+    private int port;
 
     public CurrencyConversionResponse() {
     }
 
-    public CurrencyConversionResponse(String from, String to, BigDecimal conversionMultiple, BigDecimal quantity, BigDecimal totalCalculatedAmount) {
+    public CurrencyConversionResponse(String from, String to, BigDecimal conversionMultiple, BigDecimal quantity, BigDecimal totalCalculatedAmount, int port) {
         this.from = from;
         this.to = to;
         this.conversionMultiple = conversionMultiple;
         this.quantity = quantity;
         this.totalCalculatedAmount = totalCalculatedAmount;
+        this.port = port;
     }
 
     public String getFrom() {
@@ -39,5 +41,9 @@ public class CurrencyConversionResponse {
 
     public BigDecimal getTotalCalculatedAmount() {
         return totalCalculatedAmount;
+    }
+
+    public int getPort() {
+        return port;
     }
 }
