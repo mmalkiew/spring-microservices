@@ -36,6 +36,8 @@ public class CurrencyExchangeController {
         exchangeValue.setConversionMultiple(new BigDecimal(65));
         exchangeValue.setPort(Integer.parseInt(environment.getProperty(LOCAL_SERVER_PORT_PROPERTY)));
 
+        LOGGER.info("{} -> model exchange value", exchangeValue);
+
         return exchangeValue;
     }
 }

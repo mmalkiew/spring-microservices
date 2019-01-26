@@ -1,5 +1,7 @@
 package pl.mmalkiew.microservices.currencyconversionservice.web;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +16,8 @@ import java.util.Map;
 
 @RestController
 public class CurrencyConversionController {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(CurrencyConversionController.class);
 
     private final CurrencyExchangeFeignClient feignClient;
 
@@ -47,6 +51,8 @@ public class CurrencyConversionController {
                                                            @PathVariable BigDecimal quantity) {
 
         CurrencyConversionResponse response = feignClient.retrieveExchangeValue(from, to);
+
+        LOGGER.info("{} -> response currency exchange service", response);
 
         return new CurrencyConversionResponse(from, to, response.getConversionMultiple(), quantity,
                 quantity.multiply(response.getConversionMultiple()), response.getPort());
