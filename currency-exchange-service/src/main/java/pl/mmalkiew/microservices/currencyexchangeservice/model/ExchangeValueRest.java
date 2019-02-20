@@ -2,7 +2,7 @@ package pl.mmalkiew.microservices.currencyexchangeservice.model;
 
 import java.math.BigDecimal;
 
-public class ExchangeValue {
+public class ExchangeValueRest {
 
 
     private Long id;
