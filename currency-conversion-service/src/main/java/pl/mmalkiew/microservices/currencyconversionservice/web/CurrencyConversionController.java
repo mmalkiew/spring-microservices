@@ -50,6 +50,8 @@ public class CurrencyConversionController {
                                                            @PathVariable String to,
                                                            @PathVariable BigDecimal quantity) {
 
+        LOGGER.info("invoke rest with param: from {} to {} quantity", from, to, quantity);
+
         CurrencyConversionResponse response = feignClient.retrieveExchangeValue(from, to);
 
         LOGGER.info("{} -> response currency exchange service", response);
